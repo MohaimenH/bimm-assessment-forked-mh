@@ -1,5 +1,3 @@
-import React from "react";
-
 type ImageProps = {
   mobile: string;
   tablet: string;
@@ -34,8 +32,8 @@ export function ResponsiveImage({
           display: "block",
           transition: "transform 0.8s ease",
         }}
-        onMouseOver={e => (e.currentTarget.style.transform = "scale(1.08)")}
-        onMouseOut={e => (e.currentTarget.style.transform = "scale(1)")}
+        onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.08)")}
+        onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
       />
     </picture>
   );

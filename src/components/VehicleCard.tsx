@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { ResponsiveImage } from "./ResponsiveImage";
 import { Vehicle } from "../types/common";
@@ -9,7 +8,9 @@ type VehicleCardProps = {
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
   return (
-    <Card sx={{ width: "100%", maxWidth: 400, background: "#fff", borderRadius: 2 }}>
+    <Card
+      sx={{ width: "100%", maxWidth: 400, background: "#fff", borderRadius: 2 }}
+    >
       <CardMedia>
         <ResponsiveImage
           mobile={vehicle.mobile}

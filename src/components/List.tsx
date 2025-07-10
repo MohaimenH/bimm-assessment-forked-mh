@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Grid from "@mui/material/Grid";
 import { VehicleCard } from "./VehicleCard";
 import TextField from "@mui/material/TextField";
@@ -20,20 +20,21 @@ export function List({ vehicles }: VehicleListProps) {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState<"year" | "make" | "model">("year");
 
-const filteredAndSorted = useMemo(() =>
-  vehicles
-    .filter((v) =>
-      search.trim()
-        ? v.model.toLowerCase().includes(search.trim().toLowerCase())
-        : true
-    )
-    .sort((a, b) =>
-      sortBy === "year"
-        ? b.year - a.year
-        : a[sortBy].localeCompare(b[sortBy])
-    ),
-  [vehicles, search, sortBy]
-);
+  const filteredAndSorted = useMemo(
+    () =>
+      vehicles
+        .filter((v) =>
+          search.trim()
+            ? v.model.toLowerCase().includes(search.trim().toLowerCase())
+            : true
+        )
+        .sort((a, b) =>
+          sortBy === "year"
+            ? b.year - a.year
+            : a[sortBy].localeCompare(b[sortBy])
+        ),
+    [vehicles, search, sortBy]
+  );
 
   return (
     <Box>
@@ -48,7 +49,9 @@ const filteredAndSorted = useMemo(() =>
           select
           label="Sort by"
           value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as "year" | "make" | "model")}
+          onChange={(e) =>
+            setSortBy(e.target.value as "year" | "make" | "model")
+          }
           size="small"
         >
           {sortOptions.map((option) => (

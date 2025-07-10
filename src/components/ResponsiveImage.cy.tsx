@@ -1,4 +1,3 @@
-import React from "react";
 import { ResponsiveImage } from "./ResponsiveImage";
 
 const imageProps = {
@@ -21,5 +20,4 @@ describe("<ResponsiveImage />", () => {
     cy.get("picture").should("exist");
     cy.get("source").should("have.length", 2);
   });
-
 });

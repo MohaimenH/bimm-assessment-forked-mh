@@ -2,7 +2,7 @@ import { graphql, HttpResponse } from "msw";
 import { carList } from "./data";
 
 export const mutationHandlers = [
-    graphql.mutation("CreateCar", async ({ variables }) => {
+  graphql.mutation("CreateCar", async ({ variables }) => {
     const { input } = variables;
     const newCar = {
       id: crypto.randomUUID(),

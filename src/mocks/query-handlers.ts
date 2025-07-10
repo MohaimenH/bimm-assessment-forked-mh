@@ -5,7 +5,7 @@ export const queryHandlers = [
   graphql.query("GetCars", () => {
     return HttpResponse.json({ data: { cars: carList } });
   }),
-    graphql.query("FilterCars", ({ variables }) => {
+  graphql.query("FilterCars", ({ variables }) => {
     const { make, model, year, color } = variables;
 
     const filteredCars = carList.filter((car) => {
@@ -18,5 +18,5 @@ export const queryHandlers = [
     });
 
     return HttpResponse.json({ data: { cars: filteredCars } });
-  })
+  }),
 ];

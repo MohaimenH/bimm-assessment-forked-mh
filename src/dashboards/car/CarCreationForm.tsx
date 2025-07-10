@@ -1,6 +1,9 @@
-import React from "react";
-import { useCreateCarMutation, GetCarsDocument } from "../../__generated__/types";
+import {
+  useCreateCarMutation,
+  GetCarsDocument,
+} from "../../__generated__/types";
 import { Form } from "../../components/Form";
+import { worker } from "../../mocks/browser";
 
 const carFields = [
   { name: "make", label: "Make", required: true },
@@ -27,9 +30,12 @@ export function CarCreationForm() {
 
   const handleSubmit = async (values: Record<string, unknown>) => {
     const carValues = values as typeof initialCarValues;
-    await createCar({
-      variables: { input: { ...carValues, year: Number(carValues.year) } },
-      refetchQueries: [{ query: GetCarsDocument }],
+    worker.start().then(async () => {
+      //Fixes error with MSW on CodeSandbox - not required locally or if MSW is disabled
+      await createCar({
+        variables: { input: { ...carValues, year: Number(carValues.year) } },
+        refetchQueries: [{ query: GetCarsDocument }],
+      });
     });
   };
 
