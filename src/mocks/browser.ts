@@ -1,4 +1,5 @@
 import { setupWorker } from "msw/browser";
-import { handlers } from "./handlers";
+import { queryHandlers } from "./query-handlers";
+import { mutationHandlers } from "./mutation-handlers";
 
-export const worker = setupWorker(...handlers);
+export const worker = setupWorker(...queryHandlers, ...mutationHandlers);
